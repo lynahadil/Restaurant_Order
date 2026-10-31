@@ -1,4 +1,3 @@
-
 #ifndef RESTAURANT_H
 #define RESTAURANT_H
 
@@ -36,7 +35,9 @@ typedef struct Order {
 } Order;
 
 // Part 1 functions
-void addMenuItem(MenuItem **head);
+MenuItem *addMenuItem(MenuItem *P);
+MenuItem *creatnew(MenuItem *P, int x, char y[], char t[], float z);
+
 void deleteMenuItem(MenuItem **head, Order *orders);
 void searchItem(MenuItem *head);
 void displayMenu(MenuItem *head);

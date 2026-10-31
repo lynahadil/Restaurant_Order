@@ -1,82 +1,86 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "restaurant.h"
 
-void addMenuItem(MenuItem **head)
+MenuItem *addMenuItem(MenuItem *P)
 {
-    int id;
-    float price;
+    MenuItem *H, *Q;
+    int x;
+    char y[50], t[50];
+    float z;
 
-   
+    // Enter item ID
     printf("Enter item ID: ");
-    scanf("%d", &id);
+    scanf("%d", &x);
 
-    
-    MenuItem *temp = *head;
+    // Check if ID already exists
+    Q = P;
 
-    while (temp != NULL)
+    while (Q != NULL)
     {
-        if (temp->id == id)
+        if (Q->id == x)
         {
-            printf("Error: This ID already exists!\n");
-            return;
+            printf("This ID already exists!\n");
+            return P;
         }
 
-        temp = temp->next;
+        Q = Q->next;
     }
 
-
-    MenuItem *newItem = malloc(sizeof(MenuItem));
-
-    if (newItem == NULL)
-    {
-        printf("Memory allocation failed!\n");
-        return;
-    }
-
-    newItem->id = id;
-
-
+    // Enter item name
     printf("Enter item name: ");
-    scanf(" %49[^\n]", newItem->name);
+    scanf(" %49[^\n]", y);
 
-    // 5. Enter the category
-    printf("Enter category: ");
-    scanf(" %49[^\n]", newItem->category);
+    // Enter item category
+    printf("Enter item category: ");
+    scanf(" %49[^\n]", t);
 
+    // Enter item price
+    printf("Enter item price: ");
+    scanf("%f", &z);
 
-    printf("Enter unit price: ");
-    scanf("%f", &price);
-
-    if (price <= 0)
+    if (z <= 0)
     {
         printf("Invalid price!\n");
-        free(newItem);
-        return;
+        return P;
     }
 
-    newItem->price = price;
+    // Create a new node
+    H = (MenuItem*) malloc(sizeof(MenuItem));
 
- 
-    newItem->next = NULL;
-
-    if (*head == NULL)
+    if (H == NULL)
     {
-        *head = newItem;
+        printf("Memory allocation error!\n");
+        return P;
+    }
+
+    H->id = x;
+    H->price = z;
+
+    strcpy(H->name, y);
+    strcpy(H->category, t);
+
+    H->next = NULL;
+
+    // Insert the node
+    if (P == NULL)
+    {
+        P = H;
     }
     else
     {
-        temp = *head;
+        Q = P;
 
-        while (temp->next != NULL)
+        while (Q->next != NULL)
         {
-            temp = temp->next;
+            Q = Q->next;
         }
 
-        temp->next = newItem;
+        Q->next = H;
     }
 
-    printf("\nMenu item added successfully!\n");
+    printf("Item added successfully!\n");
+
+    return P;
 }

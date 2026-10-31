@@ -1,6 +1,7 @@
 {
   "configurations": [
     {
+<<<<<<< Updated upstream
       "name": "macos-clang-x64",
       "includePath": [
         "${workspaceFolder}/**"
@@ -9,6 +10,16 @@
       "cStandard": "${default}",
       "cppStandard": "${default}",
       "intelliSenseMode": "macos-clang-x64",
+=======
+      "name": "macos-gcc-x64",
+      "includePath": [
+        "${workspaceFolder}/**"
+      ],
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "${default}",
+      "cppStandard": "${default}",
+      "intelliSenseMode": "macos-gcc-x64",
+>>>>>>> Stashed changes
       "compilerArgs": [
         ""
       ]
