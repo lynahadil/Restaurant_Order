@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,6 +14,12 @@ MenuItem *addMenuItem(MenuItem *P)
     // Enter item ID
     printf("Enter item ID: ");
     scanf("%d", &x);
+
+    if (x <= 0)
+    {
+        printf("Invalid ID!\n");
+        return P;
+    }
 
     // Check if ID already exists
     Q = P;
