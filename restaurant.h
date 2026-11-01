@@ -38,11 +38,11 @@ typedef struct Order {
 // Menu functions
 MenuItem *addMenuItem(MenuItem *P);
 MenuItem *creatnew(MenuItem *P, int x, char y[], char t[], float z);
-void deleteMenuItem(MenuItem **head, Order *orders);
+MenuItem *deleteMenuItem(MenuItem *L, int DM, Order *orders);
 void searchItem(MenuItem *head);
 void displayMenu(MenuItem *head);
 
 // Order functions
 Order *createOrder(Order *orders, MenuItem *menu);
-
+void cancelOrder(Order *head, int orderNumber);
 #endif

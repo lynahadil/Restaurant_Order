@@ -1,6 +1,7 @@
+
 #include <stdio.h>
 #include <stdlib.h>
-#include "rasturant.h"
+#include "restaurant.h"
 
 void cancelOrder(Order *head, int orderNumber)
 {
