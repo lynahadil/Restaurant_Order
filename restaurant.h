@@ -44,5 +44,7 @@ void displayMenu(MenuItem *head);
 
 // Order functions
 Order *createOrder(Order *orders, MenuItem *menu);
+int modifyOrder(Order *head, int idOrder, int idItem, int x);
 void cancelOrder(Order *head, int orderNumber);
+
 #endif

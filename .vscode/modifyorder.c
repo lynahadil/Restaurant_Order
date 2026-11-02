@@ -1,28 +1,50 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include "rasturant.h"
 
-typedef struct Order {
-    int id;
-    int quantite;
-    int status; // Par exemple : 0 pour en cours, 1 (ou autre) pour complété
-    struct Order* next;
-} Order;
+#include <stdio.h>
+#include "restaurant.h"
 
+int modifyOrder(Order *head, int idOrder, int idItem, int x)
+{
+    Order *current = head;
+    OrderedItem *item;
 
-int modifyorder(Order* head,int idorder,int x){
-Order*current = head;
-while(current!=NULL){
-    if(current->id = idorder){
-        if(current->status==1){
-            printf("le plat est déja compléte,modification impossible./n");
-        }else{
-        current->quantite=x;
-        printf("quantité modifiée");}
-        return 1;
-    }else {
-    current=current->next;}
-}
-printf("order non trouvé./n");
-return 0;
+    while (current != NULL)
+    {
+        if (current->number == idOrder)
+        {
+            if (current->status == COMPLETED ||
+                current->status == CANCELLED)
+            {
+                printf("This order cannot be modified.\n");
+                return 0;
+            }
+
+            if (x <= 0)
+            {
+                printf("Invalid quantity!\n");
+                return 0;
+            }
+
+            item = current->items;
+
+            while (item != NULL)
+            {
+                if (item->itemId == idItem)
+                {
+                    item->quantity = x;
+                    printf("Quantity modified successfully!\n");
+                    return 1;
+                }
+
+                item = item->next;
+            }
+
+            printf("Item not found in this order.\n");
+            return 0;
+        }
+
+        current = current->next;
+    }
+
+    printf("Order not found.\n");
+    return 0;
 }
