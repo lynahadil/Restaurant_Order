@@ -1,37 +1,41 @@
-void displayMenu(MenuItem *menu)
+float calculateTotal(Order *order, MenuItem *menu)
 
 {
 
-    MenuItem *current = menu;
+    float total = 0;
 
-    if (current == NULL)
+    OrderedItem *ordered = order->items;
 
-    {
+    MenuItem *item;
 
-        printf("The menu is empty.\n");
-
-        return;
-
-    }
-
-    printf("\n========== RESTAURANT MENU ==========\n");
-
-    while (current != NULL)
+    while (ordered != NULL)
 
     {
 
-        printf("ID       : %d\n", current->id);
+        item = menu;
 
-        printf("Name     : %s\n", current->name);
+        /* Search for the menu item */
 
-        printf("Category : %s\n", current->category);
+        while (item != NULL && item->id != ordered->itemId)
 
-        printf("Price    : %.2f\n", current->price);
+        {
 
-        printf("-------------------------------------\n");
+            item = item->next;
 
-        current = current->next;
+        }
+
+        /* If the item exists in the menu */
+
+        if (item != NULL)
+
+        {
+
+            total = total + (item->price * ordered->quantity);
+
+        }
+
+        ordered = ordered->next;
 
     }
 
-}
+    return total;
