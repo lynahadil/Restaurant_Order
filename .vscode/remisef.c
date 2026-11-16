@@ -7,6 +7,7 @@
 #include <string.h>
 #include "restaurant.h"
 
+// Function to apply discounts to an order
 void appliquerRemise(Order *head, MenuItem *menu, int id_recherche)
 {
     Order *current = head;
@@ -18,35 +19,41 @@ void appliquerRemise(Order *head, MenuItem *menu, int id_recherche)
     float price = 0.0;
     int nb_plats = 0;
 
+    // 1. Search for the order in the linked list
     while (current != NULL && current->number != id_recherche)
     {
         current = current->next;
     }
 
+    // Check if the order exists
     if (current == NULL)
     {
-        printf("Commande introuvable !\n");
+        printf("Order not found!\n");
         return;
     }
 
+    // Check if the order can be modified
     if (current->status == COMPLETED ||
         current->status == CANCELLED)
     {
-        printf("Cette commande ne peut pas etre modifiee.\n");
+        printf("This order cannot be modified.\n");
         return;
     }
 
+    // 2. Calculate the initial price and total number of dishes
     item = current->items;
 
     while (item != NULL)
     {
         dish = menu;
 
+        // Search for the dish in the menu
         while (dish != NULL && dish->id != item->itemId)
         {
             dish = dish->next;
         }
 
+        // Calculate the price and quantity
         if (dish != NULL)
         {
             price += dish->price * item->quantity;
@@ -56,40 +63,44 @@ void appliquerRemise(Order *head, MenuItem *menu, int id_recherche)
         item = item->next;
     }
 
-    printf("Prix initial : %.2f DA\n", price);
+    printf("Initial price: %.2f DA\n", price);
 
+    // 3. Apply a 10% discount if the order contains at least 3 dishes
     if (nb_plats >= 3)
     {
         remise += 0.10;
-        printf("Remise de 10%% appliquee (3 plats ou plus) !\n");
+        printf("10%% discount applied (3 dishes or more)!\n");
     }
 
-    printf("Avez-vous un code promo ? (o/n) : ");
+    // 4. Ask the customer if they have a promotional code
+    printf("Do you have a promo code? (y/n): ");
     scanf(" %c", &choix);
 
-    if (choix == 'o' || choix == 'O')
+    if (choix == 'y' || choix == 'Y')
     {
-        printf("Entrez le code promo : ");
+        printf("Enter the promo code: ");
         scanf("%19s", code);
 
+        // Check if the promotional code is valid
         if (strcmp(code, "PROMO2026") == 0)
         {
             remise += 0.05;
-            printf("Code promo valide ! +5%% de remise.\n");
+            printf("Valid promo code! Additional 5%% discount.\n");
         }
         else
         {
-            printf("Code promo invalide.\n");
+            printf("Invalid promo code.\n");
         }
     }
 
+    // 5. Calculate and display the final price
     if (remise > 0)
     {
         price = price - (price * remise);
-        printf("Nouveau montant a payer : %.2f DA\n", price);
+        printf("New amount to pay: %.2f DA\n", price);
     }
     else
     {
-        printf("Aucune remise appliquee. Montant a payer : %.2f DA\n", price);
+        printf("No discount applied. Amount to pay: %.2f DA\n", price);
     }
 }
