@@ -49,5 +49,9 @@ void displayMenu(MenuItem *head);
 Order *createOrder(Order *orders, MenuItem *menu);
 int modifyOrder(Order *head, int idOrder, int idItem, int x);
 void cancelOrder(Order *head, int orderNumber);
+void displayPendingOrders(Order *head);
+void affichestatic(Order *head, MenuItem *menu);
+void appliquerRemise(Order *head, MenuItem *menu, int id_recherche);
+
 
 #endif

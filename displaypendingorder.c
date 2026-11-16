@@ -45,5 +45,4 @@ void displayPendingOrders(Order *head)
     {
         printf("Total pending orders: %d\n", count);
     }
-
 }
