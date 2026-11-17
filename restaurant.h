@@ -54,6 +54,7 @@ void displayPendingOrders(Order *head);
 void affichestatic(Order *head, MenuItem *menu);
 void appliquerRemise(Order *head, MenuItem *menu, int id_recherche);
 void displayCustomerBill(Order *orders, MenuItem *menu, int orderNumber);
+void saveOrderToFile(Order *order, MenuItem *menu);
 
 
 #endif
