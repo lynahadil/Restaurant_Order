@@ -43,7 +43,8 @@ MenuItem *addMenuItem(MenuItem *P);
 MenuItem *creatnew(MenuItem *P, int x, char y[], char t[], float z);
 MenuItem *deleteMenuItem(MenuItem *L, int DM, Order *orders);
 void searchItem(MenuItem *head);
-void displayMenu(MenuItem *head);
+void displayMenu(MenuItem *menu);
+float calculateTotal(Order *order, MenuItem *menu);
 
 // Order functions
 Order *createOrder(Order *orders, MenuItem *menu);
@@ -52,6 +53,7 @@ void cancelOrder(Order *head, int orderNumber);
 void displayPendingOrders(Order *head);
 void affichestatic(Order *head, MenuItem *menu);
 void appliquerRemise(Order *head, MenuItem *menu, int id_recherche);
+void displayCustomerBill(Order *orders, MenuItem *menu, int orderNumber);
 
 
 #endif
