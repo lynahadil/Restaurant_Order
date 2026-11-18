@@ -1,3 +1,8 @@
+//boudjabeur lina hadil groupe 2 matricule 242431486805
+//narimene sefsaf groupe 2 matricule 242431680402
+//boukhaoua rabah groupe 3 matricul 242431486518
+//moukrani bessam groupe 3 matricul 252531227706
+
 #include <stdio.h>
 #include "restaurant.h"
 
@@ -28,15 +33,33 @@ int main()
     int itemId;
     int quantity;
 
-    printf("\n");
-    printf("========================================\n");
-    printf("       RESTAURANT ORDER MANAGEMENT       \n");
+    /* Display project team */
+    printf("\n============================================\n");
+    printf("                 PROJECT TEAM               \n");
+    printf("============================================\n");
+
+    printf("1. Boudjabeur Lina Hadil\n");
+    printf("   Group: 2 | Student ID: 242431486805\n\n");
+
+    printf("2. Narimene Sefsaf\n");
+    printf("   Group: 2 | Student ID: 242431680402\n\n");
+
+    printf("3. Boukhaoua Rabah\n");
+    printf("   Group: 3 | Student ID: 242431486518\n\n");
+
+    printf("4. Moukrani Bessam\n");
+    printf("   Group: 3 | Student ID: 252531227706\n");
+
+    printf("============================================\n");
+
+    printf("\n========================================\n");
+    printf("       RESTAURANT ORDER MANAGEMENT      \n");
     printf("========================================\n");
 
     do
     {
         printf("\n");
-        printf("--------------- MAIN MENU ---------------\n");
+        printf("------------- MAIN MENU -------------\n");
         printf("1.  Add Menu Item\n");
         printf("2.  Delete Menu Item\n");
         printf("3.  Search Menu Item\n");
@@ -52,7 +75,7 @@ int main()
         printf("13. Save Order to History\n");
         printf("14. Apply Discount\n");
         printf("0.  Exit Application\n");
-        printf("----------------------------------------\n");
+        printf("-------------------------------------\n");
         printf("Enter your choice: ");
 
         scanf("%d", &choice);
@@ -66,6 +89,7 @@ int main()
             case 2:
                 printf("Enter menu item ID to delete: ");
                 scanf("%d", &id);
+
                 menu = deleteMenuItem(menu, id, orders);
                 break;
 
@@ -88,8 +112,9 @@ int main()
                 printf("Enter menu item ID: ");
                 scanf("%d", &itemId);
 
-                printf("Enter new quantity: ");
+                printf("Enter new quantity (0 to remove): ");
                 scanf("%d", &quantity);
+
                 modifyOrder(orders, menu, orderNumber, itemId, quantity);
                 break;
 
@@ -101,23 +126,24 @@ int main()
                 break;
 
             case 8:
+            {
                 printf("Enter order number: ");
                 scanf("%d", &orderNumber);
 
-                {
-                    Order *selectedOrder = findOrder(orders, orderNumber);
+                Order *selectedOrder = findOrder(orders, orderNumber);
 
-                    if (selectedOrder != NULL)
-                    {
-                        printf("Order total: %.2f DA\n",
-                               calculateTotal(selectedOrder, menu));
-                    }
-                    else
-                    {
-                        printf("Order not found.\n");
-                    }
+                if (selectedOrder != NULL)
+                {
+                    printf("Order total: %.2f DA\n",
+                           calculateTotal(selectedOrder, menu));
                 }
+                else
+                {
+                    printf("Order not found.\n");
+                }
+
                 break;
+            }
 
             case 9:
                 displayPendingOrders(orders);
@@ -142,22 +168,24 @@ int main()
                 break;
 
             case 13:
+            {
                 printf("Enter order number to save: ");
                 scanf("%d", &orderNumber);
 
-                {
-                    Order *selectedOrder = findOrder(orders, orderNumber);
+                Order *selectedOrder = findOrder(orders, orderNumber);
 
-                    if (selectedOrder != NULL)
-                    {
-                        saveOrderToFile(selectedOrder, menu);
-                    }
-                    else
-                    {
-                        printf("Order not found.\n");
-                    }
+                if (selectedOrder != NULL)
+                {
+                    saveOrderToFile(selectedOrder, menu);
+                    printf("Order saved to history.\n");
                 }
+                else
+                {
+                    printf("Order not found.\n");
+                }
+
                 break;
+            }
 
             case 14:
                 printf("Enter order number for discount: ");
