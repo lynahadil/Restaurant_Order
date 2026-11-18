@@ -48,13 +48,15 @@ float calculateTotal(Order *order, MenuItem *menu);
 
 // Order functions
 Order *createOrder(Order *orders, MenuItem *menu);
-int modifyOrder(Order *head, int idOrder, int idItem, int x);
+int modifyOrder(Order *head, MenuItem *menu, int idOrder, int idItem, int newQuantity);
 void cancelOrder(Order *head, int orderNumber);
 void displayPendingOrders(Order *head);
 void affichestatic(Order *head, MenuItem *menu);
 void appliquerRemise(Order *head, MenuItem *menu, int id_recherche);
 void displayCustomerBill(Order *orders, MenuItem *menu, int orderNumber);
 void saveOrderToFile(Order *order, MenuItem *menu);
+void modifyOrderStatus(Order *orders, int orderNumber);
+void freeMemory(MenuItem *menu, Order *orders);
 
 
 #endif

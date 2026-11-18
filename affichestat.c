@@ -18,7 +18,7 @@ void affichestatic(Order *head, MenuItem *menu)
 
         if (current->status == COMPLETED)
         {
-            pricef += calculateOrderTotal(current, menu);
+            pricef += calculateTotal(current, menu);
         }
         else if (current->status == PENDING ||
                  current->status == PREPARING)
