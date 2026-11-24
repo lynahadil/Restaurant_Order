@@ -17,6 +17,28 @@ int main()
     {
         printf("\n\n");
 
+        /* PROJECT TEAM */
+        printf("  __________________________________________________________\n");
+        printf(" |                                                          |\n");
+        printf(" |                    PROJECT TEAM                          |\n");
+        printf(" |__________________________________________________________|\n");
+        printf(" |                                                          |\n");
+        printf(" |  Boudjabeur Lina Hadil                                    |\n");
+        printf(" |  Group: 2  |  Student ID: 242431486805                   |\n");
+        printf(" |                                                          |\n");
+        printf(" |  Narimene Sefsaf                                          |\n");
+        printf(" |  Group: 2  |  Student ID: 242431680402                   |\n");
+        printf(" |                                                          |\n");
+        printf(" |  Boukhaoua Rabah                                          |\n");
+        printf(" |  Group: 3  |  Student ID: 242431486518                   |\n");
+        printf(" |                                                          |\n");
+        printf(" |  Moukrani Bessam                                          |\n");
+        printf(" |  Group: 3  |  Student ID: 252531227706                   |\n");
+        printf(" |__________________________________________________________|\n");
+
+        /* MAIN SCREEN */
+        printf("\n");
+
         printf("  __________________________________________________________\n");
         printf(" |                                                          |\n");
         printf(" |              RESTAURANT ORDER MANAGER                    |\n");
