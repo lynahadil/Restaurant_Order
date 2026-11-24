@@ -50,7 +50,7 @@ float calculateTotal(Order *order, MenuItem *menu);
 Order *createOrder(Order *orders, MenuItem *menu);
 int modifyOrder(Order *head, MenuItem *menu, int idOrder, int idItem, int newQuantity);
 void cancelOrder(Order *head, int orderNumber);
-void displayPendingOrders(Order *head);
+void displayPendingOrders(Order *head, MenuItem *menu);
 void affichestatic(Order *head, MenuItem *menu);
 void appliquerRemise(Order *head, MenuItem *menu, int id_recherche);
 void displayCustomerBill(Order *orders, MenuItem *menu, int orderNumber);
@@ -58,5 +58,11 @@ void saveOrderToFile(Order *order, MenuItem *menu);
 void modifyOrderStatus(Order *orders, int orderNumber);
 void freeMemory(MenuItem *menu, Order *orders);
 
+
+// Role functions
+void kitchenMenu(Order *orders, MenuItem *menu);
+void staffMenu(Order **orders, MenuItem *menu);
+void customerMenu(Order **orders, MenuItem *menu);
+void managerMenu(Order **orders, MenuItem **menu);
 
 #endif
